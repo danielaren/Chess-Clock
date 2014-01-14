@@ -1,0 +1,13 @@
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\ApplicationIcon.png
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\Background.png
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\Chess Clock.dll
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\Chess Clock.pdb
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\AppManifest.xaml
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\Chess_Clock.xap
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Chess Clock.csprojResolveAssemblyReference.cache
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\App.g.cs
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\MainPage.g.cs
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Chess Clock.g.resources
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Chess Clock.dll
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Chess Clock.pdb
+c:\users\daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\XapCacheFile.xml
