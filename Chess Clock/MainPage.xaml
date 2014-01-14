@@ -28,7 +28,12 @@
         </Grid.ColumnDefinitions>
     
         <TextBlock Grid.Row="1" FontSize="40" Text="Player 1"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="40" Text="" Name="textBlockTimerPlayer1"></TextBlock>
+        
+        <HyperlinkButton Name="hyperlinkButtonDone" Click="hyperlinkButtonDone_Click" 
+                         Grid.Row="2" Grid.Column="0" FontSize="60" Content="Done"></HyperlinkButton>
         <TextBlock Grid.Row="3" FontSize="40" Text="Player 2"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="40" Text="" Name="textBlockTimerPlayer2"></TextBlock>
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ChessClock" Text="Chess Clock" Style="{StaticResource PhoneTextNormalStyle}"/>
