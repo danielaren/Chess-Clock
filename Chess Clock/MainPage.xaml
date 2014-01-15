@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -21,27 +22,43 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-    
-        <TextBlock Grid.Row="1" FontSize="40" Text="Player 1"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="40" Text="" Name="textBlockTimerPlayer1"></TextBlock>
-        
-        <HyperlinkButton Name="hyperlinkButtonDone" Click="hyperlinkButtonDone_Click" 
-                         Grid.Row="2" Grid.Column="0" FontSize="60" Content="Done"></HyperlinkButton>
+
+        <Button Name="ButtonDone" Click="ButtonDone_Click" 
+                         Grid.Row="1" Grid.Column="0" FontSize="70"
+                Content="Start">
+        </Button>
+        <toolkit:ListPicker SelectionChanged="listPickerChooseTime_SelectionChanged" Grid.Row="1" Grid.Column="1" Name="listPickerChooseTime"></toolkit:ListPicker>
+        <TextBlock Grid.Row="2" FontSize="40" Text="Player 1"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="40" Text="" 
+                   Name="textBlockTimerPlayer1"></TextBlock>
+
         <TextBlock Grid.Row="3" FontSize="40" Text="Player 2"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="40" Text="" Name="textBlockTimerPlayer2"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="40" Text="" 
+                   Name="textBlockTimerPlayer2"></TextBlock>
+        
+        <TextBlock Grid.Row="4" FontSize="40" Text="Player 3"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="2" FontSize="40" Text=""
+                   Name="textBlockTimerPlayer3"></TextBlock>
+        <Popup>
+            <TextBlock Name="textBlockPopupShowWinner" Foreground="LightBlue">
+                Winner is:
+            </TextBlock>
+        </Popup>
+        
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ChessClock" Text="Chess Clock" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="ChessClock" FontSize="30" Text="Chess Clock" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
-        
+
 
         <!--ContentPanel - place additional content here-->
-        
+
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Threading;
 
 namespace Chess_Clock
 {
-    public class Player : ClockTime
+    public class Player 
     {
         private string name;
         
@@ -38,8 +39,16 @@ namespace Chess_Clock
             get { return lastTime; }
             set { lastTime = value; }
         }
-        
-        
+
+        public DispatcherTimer timer;
+
+        public Player()
+        {
+            startTime = 0;
+            stopTime = 10;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+        }
         
     }
 }

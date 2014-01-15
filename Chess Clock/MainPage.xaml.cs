@@ -11,84 +11,120 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace Chess_Clock
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private int stopTime1 = 10;
-        private int stopTime2 = 10;
-        private int startTime1 = 0;
-        private int startTime2 = 0;
-        private int lastTime1 = 0;
-        private int lastTime2 = 0;
-        private bool firstPlayer = true;
-        DispatcherTimer timer1 = new DispatcherTimer();
-        DispatcherTimer timer2 = new DispatcherTimer();
+        private bool firstPlayer = false;
+        Player player1;
+        Player player2;
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+            player1 = new Player();
+            player2 = new Player();
+            InitiateTimePicker();
             InitiateClock();
         }
 
         private void InitiateClock()
         {
-            timer1.Tick += time_Tick;
-            timer2.Tick += time_Tick;
-            timer1.Interval = TimeSpan.FromSeconds(1);
-            timer2.Interval = TimeSpan.FromSeconds(1);
-            lastTime1 = startTime1;
-            lastTime2 = startTime2;
-            if (firstPlayer)
+            player1.timer.Tick += time_Tick;
+            player2.timer.Tick += time_Tick;
+            ShowTimesForPlayers();
+        }
+
+        private void InitiateTimePicker()
+        {
+            var listWithTimes = PopulateListWithNumbers(30);
+            listPickerChooseTime.ItemsSource = listWithTimes;
+        }
+
+        private List<int> PopulateListWithNumbers(int numbers)
+        {
+            var listWithTimes = new List<int>();
+            for (int i = 1; i < numbers; i++)
             {
-                timer1.Start();
-                
+                listWithTimes.Add(i);
             }
+            return listWithTimes;
         }
 
         void time_Tick(object sender, object e)
         {
             if (firstPlayer)
             {
-                textBlockTimerPlayer1.Text = (10 - lastTime1).ToString();
-                lastTime1++;
+                textBlockTimerPlayer1.Text = (player1.StopTime - player1.LastTime).ToString();
+                player1.LastTime++;
 
-                if (lastTime1 > stopTime1)
+                if (player1.LastTime > player1.StopTime)
                 {
-                    timer1.Stop();
-                    hyperlinkButtonDone.Content = "Player 2 Won!";
+                    player1.timer.Stop();
+                    ShowWinnerPopup(false);
                 }
             }
             else
             {
-                textBlockTimerPlayer2.Text = (10 - lastTime2).ToString();
-                lastTime2++;
+                textBlockTimerPlayer2.Text = (player2.StopTime - player2.LastTime).ToString();
+                player2.LastTime++;
 
-                if (lastTime2 > stopTime2)
+                if (player2.LastTime > player2.StopTime)
                 {
-                    timer2.Stop();
-                    hyperlinkButtonDone.Content = "Player 1 Won!";
+                    player2.timer.Stop();
+                    ShowWinnerPopup(true);
                 }
             }
-            
         }
 
-        private void hyperlinkButtonDone_Click(object sender, RoutedEventArgs e)
+        private void ShowWinnerPopup(bool firstPlayer)
+        {
+            ShowTimesForPlayers();
+            ButtonDone.Content = "Start";
+            switch (firstPlayer)
+            {
+                case true: MessageBox.Show("Winner is player 1");
+                    break;
+                case false: MessageBox.Show("Winner is player 2");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             if (firstPlayer)
             {
-                timer1.Stop();
-                timer2.Start();
+                player1.timer.Stop();
+                player2.timer.Start();
                 firstPlayer = false;
             }
             else
             {
-                timer2.Stop();
-                timer1.Start();
+                player2.timer.Stop();
+                player1.timer.Start();
                 firstPlayer = true;
+                ButtonDone.Content = "Done";
             }
+        }
+
+        private void listPickerChooseTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            player1.StopTime = Int16.Parse(listPickerChooseTime.SelectedItem.ToString());
+            player2.StopTime = Int16.Parse(listPickerChooseTime.SelectedItem.ToString());
+            ShowTimesForPlayers();
+        }
+
+        private void ShowTimesForPlayers()
+        {
+            player1.LastTime = player1.StartTime;
+            player1.LastTime = player2.StartTime;
+            textBlockTimerPlayer1.Text = (player1.StopTime - player1.LastTime).ToString();
+            textBlockTimerPlayer2.Text = (player1.StopTime - player2.LastTime).ToString();
         }
     }
 }
