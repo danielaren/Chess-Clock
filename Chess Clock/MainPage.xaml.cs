@@ -46,6 +46,7 @@ namespace Chess_Clock
         {
             var listWithTimes = PopulateListWithNumbers();
             listPickerChooseTime.ItemsSource = listWithTimes;
+            listPickerChooseTime.SelectedItem = listWithTimes[0];
         }
 
         private List<int> PopulateListWithNumbers()
@@ -120,6 +121,13 @@ namespace Chess_Clock
         {
             firstTime = true;
             activePlayer = 1;
+            player1.timer.Stop();
+            player2.timer.Stop();
+            player3.timer.Stop();
+            listPickerChooseTime.IsEnabled = true;
+            InitiateTimePicker();
+            ShowTimesForPlayers();
+            ButtonDone.Content = "Start";
         }
 
         private void ButtonDone_Click(object sender, RoutedEventArgs e)
@@ -170,7 +178,12 @@ namespace Chess_Clock
             var minutesLeft = seconds / 60;
             var secondsLeft = seconds % 60;
    
-            return string.Format("{0}m, {1}s", minutesLeft, secondsLeft);
+            return string.Format("{0}:{1}", minutesLeft, secondsLeft);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ResetPlayerHelpSettings();
         }
     }
 }
