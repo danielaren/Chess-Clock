@@ -37,3 +37,4 @@ C:\Users\Daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bi
 C:\Users\Daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\Daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\Bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 C:\Users\Daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Help.g.cs
+C:\Users\Daniel\documents\visual studio 2012\Projects\Chess Clock\Chess Clock\obj\Debug\Loading.g.cs
